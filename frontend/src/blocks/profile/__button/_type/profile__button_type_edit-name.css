@@ -1,0 +1,17 @@
+.profile__button_type_edit-name {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #fff;
+  background-image: url(edit-name.svg);
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 800px) {
+  .profile__button_type_edit-name {
+    width: 24px;
+    height: 24px;
+  }
+}

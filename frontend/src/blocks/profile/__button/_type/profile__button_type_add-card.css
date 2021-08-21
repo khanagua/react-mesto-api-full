@@ -1,0 +1,16 @@
+.profile__button_type_add-card {
+  min-width: 282px;
+  min-height: 50px;
+  margin: 0 auto;
+  border: 2px solid #fff;
+  font-size: 40px;
+}
+
+@media (min-width: 800px) {
+  .profile__button_type_add-card {
+    min-width: 150px;
+    min-height: 50px;
+    margin: 0;
+    margin-left: auto;
+  }
+}

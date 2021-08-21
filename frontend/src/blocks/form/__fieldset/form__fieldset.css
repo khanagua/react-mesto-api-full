@@ -1,0 +1,11 @@
+.form__fieldset {
+  padding: 68px 0 0 0;
+  margin: 0;
+  border: 0;
+}
+
+@media (min-width: 800px) {
+  .form__fieldset {
+    padding: 41px 0 0 0;
+  }
+}

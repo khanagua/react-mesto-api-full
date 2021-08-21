@@ -1,0 +1,6 @@
+.popup__container {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  opacity: 1;
+}

@@ -1,0 +1,10 @@
+.authorization__footer {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  margin: 15px 0 15px 0;
+  position: fixed;
+  bottom: 60px;
+}

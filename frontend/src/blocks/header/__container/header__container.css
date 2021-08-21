@@ -1,0 +1,7 @@
+.header__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 24px;
+}

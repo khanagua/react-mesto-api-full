@@ -1,0 +1,9 @@
+.authorization__link {
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-bottom: 80px;
+}
+
+.authorization__link:hover {
+  opacity: 0.6;
+}

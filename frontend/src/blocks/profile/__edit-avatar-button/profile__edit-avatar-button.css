@@ -1,0 +1,27 @@
+.profile__edit-avatar-button {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  
+  .profile__edit-avatar-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(./edit-avatar-btn.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1;
+  }
+  
+  @media screen and (max-width: 800px) {
+    .profile__edit-avatar-button {
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+  }

@@ -1,0 +1,14 @@
+.form__input_type_dark {
+  background-color: #000;
+  border-bottom: 2px solid #CCCCCC;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  font-style: normal;
+  color: #FFFFFF;
+}
+
+::-webkit-input-placeholder {color:#CCCCCC;}
+::-moz-placeholder          {color:#CCCCCC;}
+:-moz-placeholder           {color:#CCCCCC;}
+:-ms-input-placeholder      {color:#CCCCCC;}

@@ -1,0 +1,16 @@
+.popup__container_type_form {
+  width: 84vw;
+  min-height: 322px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #000;
+  margin: 0 19px;
+  padding: 25px 22px;
+}
+
+@media (min-width: 800px) {
+  .popup__container_type_form {
+    padding: 34px 36px 37px 36px;  
+    width: 430px;
+  }
+}

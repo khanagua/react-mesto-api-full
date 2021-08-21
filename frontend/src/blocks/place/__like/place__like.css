@@ -1,0 +1,21 @@
+.place__like {
+  display: block;
+  width: 22px;
+  height: 19px;
+  background-image: url(like-white.svg);
+  background-size: 100%;
+  transition: opacity 0.3s;
+  border: 0;
+  background-color: #fff;
+  padding: 0;
+}
+
+.place__like:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.place__like:active {
+  opacity: 0.5;
+  background-image: url(like-black.svg);
+}
