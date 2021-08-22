@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
-const cors = require('cors');
+// const cors = require('cors');
 const { celebrate, Joi, errors } = require('celebrate');
 const rateLimit = require('express-rate-limit');
 const { method } = require('./utils/method');
@@ -56,7 +56,7 @@ mongoose.connect('mongodb://localhost:27017/data/db', {
 //   next();
 // });
 
-app.use(cors());
+// app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
