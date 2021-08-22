@@ -90,6 +90,7 @@ class Api {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${this._token}`,
+        'Content-Type': 'application/json'
       }
     })
     .then(this._getData)
@@ -99,7 +100,8 @@ class Api {
     return fetch(`${this._BASE_URL}/cards/${id}/likes`, {
       method: 'PUT',
       headers: {
-        authorization: this._token
+        'Authorization': `Bearer ${this._token}`,
+        'Content-Type': 'application/json'
       }
     })
     .then(this._getData)
@@ -110,6 +112,7 @@ class Api {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${this._token}`,
+        'Content-Type': 'application/json'
       }
     })
     .then(this._getData)
