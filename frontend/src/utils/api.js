@@ -1,4 +1,4 @@
-import {address, token} from './constants.js';
+import {address} from './constants.js';
 
 class Api {
   constructor(address, token) {
@@ -112,6 +112,6 @@ class Api {
   }
 }
 
-const api = new Api(address, token);
+const api = new Api(address);
 
 export default api;
