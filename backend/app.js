@@ -23,7 +23,7 @@ const app = express();
 
 app.use(limiter);
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
+mongoose.connect('mongodb://localhost:27017/data/db', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
