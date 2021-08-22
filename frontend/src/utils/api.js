@@ -1,8 +1,8 @@
-import {address} from './constants.js';
+import { BASE_URL } from './constants.js';
 
 class Api {
-  constructor(address) {
-    this._address = address;
+  constructor(BASE_URL) {
+    this._BASE_URL = BASE_URL;
     // this._token = token;
     // this._cohort = cohort
   }
@@ -16,7 +16,7 @@ class Api {
   }
 
   getInfo(part) {
-    return fetch(`${this._address}${part}`, {
+    return fetch(`${this._BASE_URL}${part}`, {
       method: 'GET',
       headers: {
         // authorization: this._token
@@ -26,7 +26,7 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._address}/users/me`, {
+    return fetch(`${this._BASE_URL}/users/me`, {
       method: 'GET',
       headers: {
         // authorization: this._token
@@ -36,7 +36,7 @@ class Api {
   }
 
   changeInfo(data) {
-    return fetch(`${this._address}/users/me`, {
+    return fetch(`${this._BASE_URL}/users/me`, {
       method: 'PATCH',
       headers: {
         // authorization: this._token,
@@ -51,7 +51,7 @@ class Api {
   }
 
   pushNewCard(data) {
-    return fetch(`${this._address}/cards`, {
+    return fetch(`${this._BASE_URL}/cards`, {
       method: 'POST',
       headers: {
         // authorization: this._token,
@@ -66,7 +66,7 @@ class Api {
   }
 
   deleteCard(id) {
-    return fetch(`${this._address}/cards/${id}`, {
+    return fetch(`${this._BASE_URL}/cards/${id}`, {
       method: 'DELETE',
       headers: {
         // authorization: this._token,
@@ -76,7 +76,7 @@ class Api {
   }
 
   addLike(id) {
-    return fetch(`${this._address}/cards/likes/${id}`, {
+    return fetch(`${this._BASE_URL}/cards/likes/${id}`, {
       method: 'PUT',
       headers: {
         // authorization: this._token
@@ -86,7 +86,7 @@ class Api {
   }
 
   deleteLike(id) {
-    return fetch(`${this._address}/cards/likes/${id}`, {
+    return fetch(`${this._BASE_URL}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: {
         // authorization: this._token,
@@ -100,7 +100,7 @@ class Api {
   }
 
   changeAvatar(data) {
-    return fetch(`${this._address}/users/me/avatar`, {
+    return fetch(`${this._BASE_URL}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
         // authorization: this._token,
@@ -114,6 +114,6 @@ class Api {
   }
 }
 
-const api = new Api(address);
+const api = new Api(BASE_URL);
 
 export default api;
