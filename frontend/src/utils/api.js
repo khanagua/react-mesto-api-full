@@ -1,9 +1,9 @@
 import {address} from './constants.js';
 
 class Api {
-  constructor(address, token) {
+  constructor(address) {
     this._address = address;
-    this._token = token;
+    // this._token = token;
     // this._cohort = cohort
   }
 
@@ -17,8 +17,9 @@ class Api {
 
   getInfo(part) {
     return fetch(`${this._address}${part}`, {
+      method: 'GET',
       headers: {
-        authorization: this._token
+        // authorization: this._token
       }
     })
       .then(this._getData)
@@ -26,18 +27,19 @@ class Api {
 
   getUserInfo() {
     return fetch(`${this._address}/users/me`, {
+      method: 'GET',
       headers: {
-        authorization: this._token
+        // authorization: this._token
       }
     })
       .then(this._getData)
   }
 
   changeInfo(data) {
-    return fetch(`${this._address}/v1/${this._cohort}/users/me`, {
+    return fetch(`${this._address}/users/me`, {
       method: 'PATCH',
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -49,10 +51,10 @@ class Api {
   }
 
   pushNewCard(data) {
-    return fetch(`${this._address}/v1/${this._cohort}/cards`, {
+    return fetch(`${this._address}/cards`, {
       method: 'POST',
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -64,30 +66,30 @@ class Api {
   }
 
   deleteCard(id) {
-    return fetch(`${this._address}/v1/${this._cohort}/cards/${id}`, {
+    return fetch(`${this._address}/cards/${id}`, {
       method: 'DELETE',
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
       }
     })
     .then(this._getData)
   }
 
   addLike(id) {
-    return fetch(`${this._address}/v1/${this._cohort}/cards/likes/${id}`, {
+    return fetch(`${this._address}/cards/likes/${id}`, {
       method: 'PUT',
       headers: {
-        authorization: this._token
+        // authorization: this._token
       }
     })
     .then(this._getData)
   }
 
   deleteLike(id) {
-    return fetch(`${this._address}/v1/${this._cohort}/cards/likes/${id}`, {
+    return fetch(`${this._address}/cards/likes/${id}`, {
       method: 'DELETE',
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
       }
     })
     .then(this._getData)
@@ -98,10 +100,10 @@ class Api {
   }
 
   changeAvatar(data) {
-    return fetch(`${this._address}/v1/${this._cohort}/users/me/avatar`, {
+    return fetch(`${this._address}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
-        authorization: this._token,
+        // authorization: this._token,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ 
