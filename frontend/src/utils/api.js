@@ -3,14 +3,16 @@ import { BASE_URL } from './constants.js';
 class Api {
   constructor(BASE_URL) {
     this._BASE_URL = BASE_URL;
-    // this._token = token;
+    this._token = localStorage.getItem('jwt');;
     // this._cohort = cohort
   }
 
   _getData(result) {
     if(result.ok) {
+      console.log('да');
       return result.json()
      } else {
+      console.log('нет');
        return Promise.reject(result.status)
      } 
   }
@@ -19,8 +21,10 @@ class Api {
     return fetch(`${this._BASE_URL}${part}`, {
       method: 'GET',
       headers: {
-        // authorization: this._token
-      }
+        'Authorization': `Bearer ${this._token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
     })
       .then(this._getData)
   }
@@ -29,8 +33,10 @@ class Api {
     return fetch(`${this._BASE_URL}/users/me`, {
       method: 'GET',
       headers: {
-        // authorization: this._token
-      }
+        'Authorization': `Bearer ${this._token}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
     })
       .then(this._getData)
   }
@@ -39,7 +45,7 @@ class Api {
     return fetch(`${this._BASE_URL}/users/me`, {
       method: 'PATCH',
       headers: {
-        // authorization: this._token,
+        'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -50,11 +56,25 @@ class Api {
     .then(this._getData)
   }
 
+  changeAvatar(data) {
+    return fetch(`${this._BASE_URL}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${this._token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        avatar: data.avatar
+      })
+    })
+    .then(this._getData)
+  }
+
   pushNewCard(data) {
     return fetch(`${this._BASE_URL}/cards`, {
       method: 'POST',
       headers: {
-        // authorization: this._token,
+        'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -69,27 +89,27 @@ class Api {
     return fetch(`${this._BASE_URL}/cards/${id}`, {
       method: 'DELETE',
       headers: {
-        // authorization: this._token,
+        'Authorization': `Bearer ${this._token}`,
       }
     })
     .then(this._getData)
   }
 
   addLike(id) {
-    return fetch(`${this._BASE_URL}/cards/likes/${id}`, {
+    return fetch(`${this._BASE_URL}/cards/${id}/likes`, {
       method: 'PUT',
       headers: {
-        // authorization: this._token
+        authorization: this._token
       }
     })
     .then(this._getData)
   }
 
   deleteLike(id) {
-    return fetch(`${this._BASE_URL}/cards/likes/${id}`, {
+    return fetch(`${this._BASE_URL}/cards/${id}/likes`, {
       method: 'DELETE',
       headers: {
-        // authorization: this._token,
+        'Authorization': `Bearer ${this._token}`,
       }
     })
     .then(this._getData)
@@ -99,19 +119,6 @@ class Api {
     return isLiked ? this.addLike(cardId) : this.deleteLike(cardId);
   }
 
-  changeAvatar(data) {
-    return fetch(`${this._BASE_URL}/users/me/avatar`, {
-      method: 'PATCH',
-      headers: {
-        // authorization: this._token,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ 
-        avatar: data.avatar
-      })
-    })
-    .then(this._getData)
-  }
 }
 
 const api = new Api(BASE_URL);

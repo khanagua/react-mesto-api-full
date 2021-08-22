@@ -51,7 +51,7 @@ function Register(props) {
             onChange={handleChange}
           />
           {/* <span className="form__error form__error_type_password"></span> */}
-          <div class="authorization__footer">
+          <div className="authorization__footer">
             <button className="form__button form__button_dark" type="submit" aria-label="Зарегистрироваться">Зарегистрироваться</button>
             <Link to="sign-in" className="authorization__link">Уже зарегистрированы? Войти</Link>
           </div>
