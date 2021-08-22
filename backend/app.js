@@ -29,19 +29,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.use(helmet());
-
-app.use(requestLogger);
-
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
-
 const allowedCors = [
   'https://mesto.khanagua.nomoredomains.club',
   'http://mesto.khanagua.nomoredomains.club',
@@ -65,6 +52,19 @@ app.use((req, res, next) => {
   }
 
   next();
+});
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(helmet());
+
+app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
 });
 
 // роуты, не требующие авторизации,
