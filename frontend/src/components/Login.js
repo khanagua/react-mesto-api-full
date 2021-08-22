@@ -53,7 +53,7 @@ function Login(props) {
             onChange={handleChange}
           />
           {/* <span className="form__error form__error_type_password"></span> */}
-          <div class="authorization__footer">
+          <div className="authorization__footer">
             <button className="form__button form__button_dark" type="submit" aria-label="Войти">Войти</button>
           </div>
         </fieldset>

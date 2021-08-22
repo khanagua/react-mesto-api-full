@@ -2,7 +2,6 @@ import React from "react";
 import PopupWithForm from './PopupWithForm.js';
 
 function AddPlacePopup(props) {
-
 	const [place, setPlace] = React.useState('');
   const [link, setLink] = React.useState('');
 

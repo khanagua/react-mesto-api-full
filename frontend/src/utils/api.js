@@ -1,10 +1,10 @@
-import {address, token, cohort} from './constants.js';
+import {address, token} from './constants.js';
 
 class Api {
-  constructor(address, token, cohort) {
+  constructor(address, token) {
     this._address = address;
     this._token = token;
-    this._cohort = cohort
+    // this._cohort = cohort
   }
 
   _getData(result) {
@@ -16,7 +16,7 @@ class Api {
   }
 
   getInfo(part) {
-    return fetch(`${this._address}/v1/${this._cohort}${part}`, {
+    return fetch(`${this._address}${part}`, {
       headers: {
         authorization: this._token
       }
@@ -25,7 +25,7 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._address}/v1/${this._cohort}/users/me`, {
+    return fetch(`${this._address}/users/me`, {
       headers: {
         authorization: this._token
       }
@@ -112,6 +112,6 @@ class Api {
   }
 }
 
-const api = new Api(address, token, cohort);
+const api = new Api(address, token);
 
 export default api;
