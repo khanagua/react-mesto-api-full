@@ -49,7 +49,6 @@ app.use((req, res, next) => {
   if (reqMethod === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
-    res.status(200);
     res.end();
   }
 
