@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
-// const cors = require('cors');
+const cors = require('cors');
 const { celebrate, Joi, errors } = require('celebrate');
 const rateLimit = require('express-rate-limit');
 const { method } = require('./utils/method');
@@ -9,7 +9,7 @@ const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const { authMiddlewares } = require('./middlewares/authMiddlewares');
 const { errorsMiddlewares } = require('./middlewares/errorsMiddlewares');
-const { corsMiddlewares } = require('./middlewares/corsMiddlewares');
+// const { corsMiddlewares } = require('./middlewares/corsMiddlewares');
 const { login, addUser } = require('./controllers/users');
 const ForbiddenError = require('./errors/forbidden-error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -26,8 +26,6 @@ const app = express();
 
 app.use(limiter);
 
-app.use(corsMiddlewares);
-
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -35,7 +33,8 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-// app.use(cors());
+app.use(cors());
+// app.use(corsMiddlewares);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
