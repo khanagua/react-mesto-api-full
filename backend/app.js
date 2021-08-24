@@ -26,6 +26,8 @@ const app = express();
 
 app.use(limiter);
 
+app.use(corsMiddlewares);
+
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -34,7 +36,6 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 // app.use(cors());
-app.use(corsMiddlewares);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
