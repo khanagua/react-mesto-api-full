@@ -9,10 +9,8 @@ class Api {
 
   _getData(result) {
     if(result.ok) {
-      console.log('да');
       return result.json()
      } else {
-      console.log('нет');
        return Promise.reject(result.status)
      } 
   }
