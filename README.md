@@ -4,19 +4,18 @@
 > - операции с карточками и пользователями. 
 
 ## Ссылки
-**Публичный IP** 84.201.163.48 
-**Frontend** https://mesto.khanagua.nomoredomains.club 
-**Backend** https://api.mesto.khanagua.nomoredomains.rocks
+**Публичный IP** 84.201.163.48  
+**Frontend** https://mesto.khanagua.nomoredomains.club  
+**Backend** https://api.mesto.khanagua.nomoredomains.rocks 
 
 ## Доступ
-Логин: `vika@ya.ru`;
+Логин: `vika@ya.ru`;  
 Пароль: `123`;
 
-
 ## Запуск проекта
-`npm run start` — запускает сервер 
-`npm run dev` — запускает сервер с hot-reload 
-`npm run lint` — проверить ошибки в стиле написания кода 
+`npm run start` — запускает сервер  
+`npm run dev` — запускает сервер с hot-reload  
+`npm run lint` — проверить ошибки в стиле написания кода  
 
 ## Технологии:
 * HTML, CSS, BEM, адаптивная вёрстка,
