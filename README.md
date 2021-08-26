@@ -8,10 +8,6 @@
 **Frontend** https://mesto.khanagua.nomoredomains.club  
 **Backend** https://api.mesto.khanagua.nomoredomains.rocks 
 
-## Доступ
-Логин: `vika@ya.ru`;  
-Пароль: `123`;
-
 ## Запуск проекта
 `npm run start` — запускает сервер  
 `npm run dev` — запускает сервер с hot-reload  
