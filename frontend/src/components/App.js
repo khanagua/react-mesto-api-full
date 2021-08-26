@@ -197,7 +197,7 @@ function App() {
     .then((res) => {
       if(res.token) {
         localStorage.setItem('jwt', res.token);
-        console.log(`Сохранил токен ${res.token.slice(0, 5)}<...>`);
+        console.log(`Сохранил токен <...>${res.token.slice(-5)}`);
         setLoggedIn(true);
         setIsSuccess(true);
         history.push('/');
@@ -229,7 +229,7 @@ function App() {
   function tokenCheck() {
     const token = localStorage.getItem('jwt');
     if (token) {
-      console.log(`Сохраненный токен ${token.slice(0,5)}<...>`);
+      console.log(`Сохраненный токен <...>${token.slice(-5)}`);
       auth.getEmail(token)
       .then(res => {
         if (res) {
