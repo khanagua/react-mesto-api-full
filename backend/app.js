@@ -74,11 +74,11 @@ app.post(
 );
 
 // авторизация
-app.use(authMiddlewares);
+// app.use(authMiddlewares);
 
 // роуты, которым авторизация нужна
-app.use('/', userRouter);
-app.use('/', cardRouter);
+app.use('/', authMiddlewares, userRouter);
+app.use('/', authMiddlewares, cardRouter);
 
 app.use('*', () => {
   console.log('хоп');
