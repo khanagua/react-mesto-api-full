@@ -11,8 +11,8 @@ const { authMiddlewares } = require('./middlewares/authMiddlewares');
 const { errorsMiddlewares } = require('./middlewares/errorsMiddlewares');
 // const { corsMiddlewares } = require('./middlewares/corsMiddlewares');
 const { login, addUser } = require('./controllers/users');
-const ForbiddenError = require('./errors/forbidden-error');
-// const NotFoundError = require('./errors/not-found-error');
+// const ForbiddenError = require('./errors/forbidden-error');
+const NotFoundError = require('./errors/not-found-error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 require('dotenv').config();
@@ -50,6 +50,10 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
+app.use('*', () => {
+  throw new NotFoundError({ message: 'Такой страницы не существует' });
+});
+
 // роуты, не требующие авторизации,
 app.post(
   '/signin',
@@ -79,10 +83,6 @@ app.use(authMiddlewares);
 // роуты, которым авторизация нужна
 app.use('/', userRouter);
 app.use('/', cardRouter);
-
-app.use('*', () => {
-  throw new ForbiddenError({ message: 'Такой страницы не существует' });
-});
 
 app.use(errorLogger); // логгер ошибок библиотеки winston
 app.use(errors()); // обработчик ошибок celebrate
