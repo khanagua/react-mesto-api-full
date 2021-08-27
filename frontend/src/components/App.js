@@ -247,7 +247,7 @@ function App() {
             console.log(`Переданный токен некорректен. Ошибка ${err}`);
             break
           default:
-            console.log(`Ошибка. ${err.message} ${err}`);
+            console.log(`Ошибка. ${err}`);
             break
         }
         setLoggedIn(false);
