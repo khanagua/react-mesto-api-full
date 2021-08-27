@@ -4,22 +4,22 @@ const { method } = require('../utils/method');
 
 const {
   getAllUsers,
-  getUser,
+  // getUser,
   updateUser,
   updateAvatar,
   getCurrentUser,
 } = require('../controllers/users');
 
 userRouter.get('/users', getAllUsers); // возвращает всех пользователей
-userRouter.get( // возвращает пользователя по _id
-  '/users/:userid',
-  celebrate({
-    params: Joi.object().keys({
-      userid: Joi.string().hex().length(24),
-    }),
-  }),
-  getUser,
-);
+// userRouter.get( // возвращает пользователя по _id
+//   '/users/:userid',
+//   celebrate({
+//     params: Joi.object().keys({
+//       userid: Joi.string().hex().length(24),
+//     }),
+//   }),
+//   getUser,
+// );
 userRouter.get('/users/me', getCurrentUser); // возвращает информацию о текущем пользователе
 userRouter.patch( // обновляет профиль
   '/users/me',
