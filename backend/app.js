@@ -81,7 +81,7 @@ app.use('/', userRouter);
 app.use('/', cardRouter);
 
 app.use('*', () => {
-  throw new NotFoundError({ message: 'Нужно пройти авторизацию' });
+  throw new NotFoundError({ message: 'Такой страницы не существует' });
 });
 
 app.use(errorLogger); // логгер ошибок библиотеки winston
