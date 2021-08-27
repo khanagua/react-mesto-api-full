@@ -41,7 +41,7 @@ export const authorize = (email, password) => {
 };
 
 export const getEmail = (token) => {
-  return fetch(`${BASE_URL}/user/me`, {
+  return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
