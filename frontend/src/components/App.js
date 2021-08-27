@@ -34,9 +34,9 @@ function App() {
   const history = useHistory();
   
   // Проверяет токен
-  React.useEffect(() => {
-    tokenCheck();
-  }, []);
+  // React.useEffect(() => {
+  //   tokenCheck();
+  // }, []);
 
   // Получает данные про пользователя
   // Загружает карточки с сервера
