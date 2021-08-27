@@ -29,13 +29,17 @@ const deleteCard = (req, res, next) => {
   Card.findById(req.params.cardId)
     .orFail(new Error(ERROR_NAME.notValidId))
     .then((card) => {
-      if (card.owner.toString() === req.user._id.toString()) {
-        card.remove();
-        res.status(200).send({ message: 'Карточка удалена' });
+      if (card.owner.toString() !== req.user._id.toString()) {
+        next(new ForbiddenError('Нельзя удалить чужую карточку'));
+      } else {
+        Card.findByIdAndDelete(req.params.cardId)
+          .then(() => res.status(200).send({ message: 'Карточка удалена' }));
+        // card.remove();
+        // res.status(200).send({ message: 'Карточка удалена' });
         // .then(() => res.status(200).send({ message: 'Карточка удалена' }))
         // .catch(() => Promise.reject(new BadRequestError('Не удалось удалить карточку')));
       }
-      return Promise.reject(new Error(ERROR_NAME.notOwnerCard));
+      // return Promise.reject(new Error(ERROR_NAME.notOwnerCard));
     })
     .catch((err) => {
       if (err.name === ERROR_NAME.cast) {
