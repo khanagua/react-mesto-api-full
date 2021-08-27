@@ -73,16 +73,17 @@ app.post(
   }), addUser,
 );
 
-app.use('*', () => {
-  throw new NotFoundError({ message: 'Такой страницы не существует' });
-});
-
 // авторизация
 app.use(authMiddlewares);
 
 // роуты, которым авторизация нужна
 app.use('/', userRouter);
 app.use('/', cardRouter);
+
+app.use('*', () => {
+  console.log('хоп');
+  throw new NotFoundError({ message: 'Такой страницы не существует' });
+});
 
 app.use(errorLogger); // логгер ошибок библиотеки winston
 app.use(errors()); // обработчик ошибок celebrate
