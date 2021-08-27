@@ -11,7 +11,6 @@ const {
 } = require('../controllers/users');
 
 userRouter.get('/users', getAllUsers); // возвращает всех пользователей
-userRouter.get('/users/me', getCurrentUser); // возвращает информацию о текущем пользователе
 userRouter.get( // возвращает пользователя по _id
   '/users/:userid',
   celebrate({
@@ -21,6 +20,7 @@ userRouter.get( // возвращает пользователя по _id
   }),
   getUser,
 );
+userRouter.get('/users/me', getCurrentUser); // возвращает информацию о текущем пользователе
 userRouter.patch( // обновляет профиль
   '/users/me',
   celebrate({
