@@ -30,9 +30,10 @@ const deleteCard = (req, res, next) => {
     .orFail(new Error(ERROR_NAME.notValidId))
     .then((card) => {
       if (card.owner.toString() === req.user._id.toString()) {
-        card.remove()
-          .then(() => res.status(200).send({ message: 'Карточка удалена' }))
-          .catch(() => Promise.reject(new BadRequestError('Не удалось удалить карточку')));
+        card.remove();
+        res.status(200).send({ message: 'Карточка удалена' });
+        // .then(() => res.status(200).send({ message: 'Карточка удалена' }))
+        // .catch(() => Promise.reject(new BadRequestError('Не удалось удалить карточку')));
       }
       return Promise.reject(new Error(ERROR_NAME.notOwnerCard));
     })
