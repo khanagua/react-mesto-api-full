@@ -50,10 +50,6 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.use('*', () => {
-  throw new NotFoundError({ message: 'Такой страницы не существует' });
-});
-
 // роуты, не требующие авторизации,
 app.post(
   '/signin',
@@ -83,6 +79,10 @@ app.use(authMiddlewares);
 // роуты, которым авторизация нужна
 app.use('/', userRouter);
 app.use('/', cardRouter);
+
+app.use('*', () => {
+  throw new NotFoundError({ message: 'Такой страницы не существует' });
+});
 
 app.use(errorLogger); // логгер ошибок библиотеки winston
 app.use(errors()); // обработчик ошибок celebrate
