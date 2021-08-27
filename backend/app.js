@@ -11,7 +11,8 @@ const { authMiddlewares } = require('./middlewares/authMiddlewares');
 const { errorsMiddlewares } = require('./middlewares/errorsMiddlewares');
 // const { corsMiddlewares } = require('./middlewares/corsMiddlewares');
 const { login, addUser } = require('./controllers/users');
-const ForbiddenError = require('./errors/forbidden-error');
+// const ForbiddenError = require('./errors/forbidden-error');
+const NotFoundError = require('./errors/not-found-error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 require('dotenv').config();
@@ -79,7 +80,9 @@ app.use(authMiddlewares);
 app.use('/', userRouter);
 app.use('/', cardRouter);
 
-app.use('*', (req, res, next) => next(new ForbiddenError('Нужно пройти авторизацию')));
+app.use('*', () => {
+  throw new NotFoundError({ message: 'Нужно пройти авторизацию' });
+});
 
 app.use(errorLogger); // логгер ошибок библиотеки winston
 app.use(errors()); // обработчик ошибок celebrate
