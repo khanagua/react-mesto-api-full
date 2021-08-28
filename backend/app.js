@@ -38,7 +38,13 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
 });
 
-app.use(cors());
+const corsWhitelist = [
+  'https://mesto.khanagua.nomoredomains.club',
+  'https://api.mesto.khanagua.nomoredomains.rocks',
+  'https://localhost:3000',
+];
+
+app.use(cors(corsWhitelist));
 // app.use(corsMiddlewares);
 
 app.use(express.json());
