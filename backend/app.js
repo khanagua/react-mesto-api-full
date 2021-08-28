@@ -44,8 +44,12 @@ const corsWhitelist = [
   'https://localhost:3000',
 ];
 
-app.use(cors(corsWhitelist));
 // app.use(corsMiddlewares);
+
+app.use(cors({
+  credentials: true,
+  origin: corsWhitelist,
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
