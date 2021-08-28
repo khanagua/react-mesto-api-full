@@ -10,7 +10,7 @@ const {
   dislikeCard,
 } = require('../controllers/cards');
 
-cardRouter.get('/cards', getAllCards); // возвращает все карточки
+cardRouter.get('/', getAllCards); // возвращает все карточки
 cardRouter.post( // создаёт карточку
   '/cards',
   celebrate({
