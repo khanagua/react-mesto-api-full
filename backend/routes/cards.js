@@ -12,7 +12,7 @@ const {
 
 cardRouter.get('/', getAllCards); // возвращает все карточки
 cardRouter.post( // создаёт карточку
-  '/cards',
+  '/',
   celebrate({
     body: Joi.object().keys({
       name: Joi.string().min(2).max(30).required(),
