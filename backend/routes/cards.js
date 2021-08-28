@@ -22,7 +22,7 @@ cardRouter.post( // создаёт карточку
   addCard,
 );
 cardRouter.delete(// удаляет карточку по идентификатору
-  '/cards/:cardId',
+  '/:cardId',
   celebrate({
     params: Joi.object().keys({
       cardId: Joi.string().hex().length(24),
@@ -31,7 +31,7 @@ cardRouter.delete(// удаляет карточку по идентификат
   deleteCard,
 );
 cardRouter.put( // ставит лайк карточке
-  '/cards/:cardId/likes',
+  '/:cardId/likes',
   celebrate({
     params: Joi.object().keys({
       cardId: Joi.string().hex().length(24),
@@ -40,7 +40,7 @@ cardRouter.put( // ставит лайк карточке
   likeCard,
 );
 cardRouter.delete( // снимает лайк с карточки
-  '/cards/:cardId/likes',
+  '/:cardId/likes',
   celebrate({
     params: Joi.object().keys({
       cardId: Joi.string().hex().length(24),

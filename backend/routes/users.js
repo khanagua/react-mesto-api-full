@@ -10,10 +10,10 @@ const {
   getCurrentUser,
 } = require('../controllers/users');
 
-userRouter.get('/users', getAllUsers); // возвращает всех пользователей
-userRouter.get('/users/me', getCurrentUser); // возвращает информацию о текущем пользователе
+userRouter.get('/', getAllUsers); // возвращает всех пользователей
+userRouter.get('/me', getCurrentUser); // возвращает информацию о текущем пользователе
 userRouter.get( // возвращает пользователя по _id
-  '/users/:userid',
+  '/:userid',
   celebrate({
     params: Joi.object().keys({
       userid: Joi.string().hex().length(24),
@@ -22,7 +22,7 @@ userRouter.get( // возвращает пользователя по _id
   getUser,
 );
 userRouter.patch( // обновляет профиль
-  '/users/me',
+  '/me',
   celebrate({
     body: Joi.object().keys({
       name: Joi.string().required().min(2).max(30),
@@ -32,7 +32,7 @@ userRouter.patch( // обновляет профиль
   updateUser,
 );
 userRouter.patch( // обновляет аватар
-  '/users/me/avatar', celebrate({
+  '/me/avatar', celebrate({
     body: Joi.object().keys({
       avatar: Joi.string().required().custom(method),
     }),
