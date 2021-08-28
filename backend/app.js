@@ -77,12 +77,11 @@ app.post(
 // app.use(authMiddlewares);
 
 // роуты, которым авторизация нужна
-app.use('/', authMiddlewares, userRouter);
-app.use('/', authMiddlewares, cardRouter);
+app.use('/users', authMiddlewares, userRouter);
+app.use('/cards', authMiddlewares, cardRouter);
 
 app.use('*', () => {
-  console.log('хоп');
-  throw new NotFoundError({ message: 'Такой страницы не существует' });
+  throw new NotFoundError('Такой страницы не существует');
 });
 
 app.use(errorLogger); // логгер ошибок библиотеки winston
