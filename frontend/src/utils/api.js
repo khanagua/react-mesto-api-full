@@ -18,11 +18,10 @@ class Api {
   getInfo(part) {
     return fetch(`${this._BASE_URL}${part}`, {
       method: 'GET',
-      credentials: 'include',
       headers: {
         'Authorization': `Bearer ${this._token}`,
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
     })
       .then(this._getData)
@@ -31,7 +30,6 @@ class Api {
   getUserInfo() {
     return fetch(`${this._BASE_URL}/users/me`, {
       method: 'GET',
-      credentials: 'include',
       headers: {
         'Authorization': `Bearer ${this._token}`,
         'Accept': 'application/json',
@@ -44,7 +42,6 @@ class Api {
   changeInfo(data) {
     return fetch(`${this._BASE_URL}/users/me`, {
       method: 'PATCH',
-      credentials: 'include',
       headers: {
         'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -60,7 +57,6 @@ class Api {
   changeAvatar(data) {
     return fetch(`${this._BASE_URL}/users/me/avatar`, {
       method: 'PATCH',
-      credentials: 'include',
       headers: {
         'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -75,7 +71,6 @@ class Api {
   pushNewCard(data) {
     return fetch(`${this._BASE_URL}/cards`, {
       method: 'POST',
-      credentials: 'include',
       headers: {
         'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -91,7 +86,6 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._BASE_URL}/cards/${id}`, {
       method: 'DELETE',
-      credentials: 'include',
       headers: {
         'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -103,7 +97,6 @@ class Api {
   addLike(id) {
     return fetch(`${this._BASE_URL}/cards/${id}/likes`, {
       method: 'PUT',
-      credentials: 'include',
       headers: {
         'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
@@ -115,7 +108,6 @@ class Api {
   deleteLike(id) {
     return fetch(`${this._BASE_URL}/cards/${id}/likes`, {
       method: 'DELETE',
-      credentials: 'include',
       headers: {
         'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
