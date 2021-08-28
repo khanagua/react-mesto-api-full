@@ -77,8 +77,8 @@ app.post(
 // app.use(authMiddlewares);
 
 // роуты, которым авторизация нужна
-app.use('/', authMiddlewares, userRouter);
-app.use('/', authMiddlewares, cardRouter);
+app.use('/users', authMiddlewares, userRouter);
+app.use('/cards', authMiddlewares, cardRouter);
 
 app.use('*', () => {
   throw new NotFoundError('Такой страницы не существует');
