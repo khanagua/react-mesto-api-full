@@ -138,7 +138,13 @@ const login = (req, res, next) => {
         NODE_ENV === 'production' ? JWT_SECRET : 'secret-key',
         { expiresIn: '7d' },
       );
-      res.status(200).send({ token });
+      // res.status(200).send({ token });
+      res
+        .cookie('jwt', token, {
+          maxAge: 3600000,
+          httpOnly: true,
+        })
+        .end();
     })
     .catch((err) => {
       if (err.message === 'IncorrectData') {
