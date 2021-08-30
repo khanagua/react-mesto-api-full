@@ -11,9 +11,7 @@ const userRouter = require('./routes/users');
 const cardRouter = require('./routes/cards');
 const { authMiddlewares } = require('./middlewares/authMiddlewares');
 const { errorsMiddlewares } = require('./middlewares/errorsMiddlewares');
-// const { corsMiddlewares } = require('./middlewares/corsMiddlewares');
 const { login, addUser } = require('./controllers/users');
-// const ForbiddenError = require('./errors/forbidden-error');
 const NotFoundError = require('./errors/not-found-error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -43,8 +41,6 @@ const corsWhitelist = [
   'https://api.mesto.khanagua.nomoredomains.rocks',
   'https://localhost:3000',
 ];
-
-// app.use(corsMiddlewares);
 
 app.use(cors({
   credentials: true,
@@ -84,9 +80,6 @@ app.post(
     }),
   }), addUser,
 );
-
-// авторизация
-// app.use(authMiddlewares);
 
 // роуты, которым авторизация нужна
 app.use('/users', authMiddlewares, userRouter);

@@ -3,8 +3,6 @@ import { BASE_URL } from './constants.js';
 class Api {
   constructor(BASE_URL) {
     this._BASE_URL = BASE_URL;
-    // // this._token = localStorage.getItem('jwt');;
-    // this._cohort = cohort
   }
 
   _getData(result) {
@@ -20,7 +18,6 @@ class Api {
       method: 'GET',
       credentials: 'include',
       headers: {
-        // 'Authorization': `Bearer ${this._token}`,
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
@@ -33,7 +30,6 @@ class Api {
       method: 'GET',
       credentials: 'include',
       headers: {
-        // 'Authorization': `Bearer ${this._token}`,
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
@@ -46,7 +42,6 @@ class Api {
       method: 'PATCH',
       credentials: 'include',
       headers: {
-        // 'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -62,7 +57,6 @@ class Api {
       method: 'PATCH',
       credentials: 'include',
       headers: {
-        // 'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ 
@@ -77,7 +71,6 @@ class Api {
       method: 'POST',
       credentials: 'include',
       headers: {
-        // 'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -93,7 +86,6 @@ class Api {
       method: 'DELETE',
       credentials: 'include',
       headers: {
-        // 'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
       }
     })
@@ -105,7 +97,6 @@ class Api {
       method: 'PUT',
       credentials: 'include',
       headers: {
-        // 'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
       }
     })
@@ -117,7 +108,6 @@ class Api {
       method: 'DELETE',
       credentials: 'include',
       headers: {
-        // 'Authorization': `Bearer ${this._token}`,
         'Content-Type': 'application/json'
       }
     })

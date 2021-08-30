@@ -128,21 +128,19 @@ const updateAvatar = (req, res, next) => {
 // авторизация пользователя
 const login = (req, res, next) => {
   const { email, password } = req.body;
-  // const { JWT_SECRET = 'secret-key' } = process.env;
   const { NODE_ENV, JWT_SECRET } = process.env;
   return User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
-        // JWT_SECRET,
         NODE_ENV === 'production' ? JWT_SECRET : 'secret-key',
         { expiresIn: '7d' },
       );
-      // res.status(200).send({ token });
       res
         .cookie('jwt', token, {
           maxAge: 3600000,
           httpOnly: true,
+          sameSite: true,
         })
         .status(200)
         .send({ message: 'Куки авторизации отправлены' });

@@ -227,44 +227,42 @@ function App() {
   }
 
   // Проверка токена
-  function tokenCheck(token) {
-    // const token = localStorage.getItem('jwt');
-    if (token) {
-      // console.log(`Сохраненный токен <...>${token.slice(-5)}`);
-      auth.getEmail(token)
-      .then(res => {
-        if (res) {
-          setLoggedIn(true);
-          setUserEmail(res.email);
-          history.push('/');
-          }
-        })
-      .catch((err) => {
-        switch(err) {
-          case 400:
-            console.log(`Токен не передан или передан не в том формате. Ошибка ${err}`);
-            break
-          case 401:
-            console.log(`Переданный токен некорректен. Ошибка ${err}`);
-            break
-          default:
-            console.log(`Ошибка. ${err}`);
-            break
-        }
-        setLoggedIn(false);
-      })
-    } else {
-      console.log(`Нет сохраненного токена`);
-    }
-  }
+  // function tokenCheck(token) {
+  //   // const token = localStorage.getItem('jwt');
+  //   if (token) {
+  //     // console.log(`Сохраненный токен <...>${token.slice(-5)}`);
+  //     auth.getEmail(token)
+  //     .then(res => {
+  //       if (res) {
+  //         setLoggedIn(true);
+  //         setUserEmail(res.email);
+  //         history.push('/');
+  //         }
+  //       })
+  //     .catch((err) => {
+  //       switch(err) {
+  //         case 400:
+  //           console.log(`Токен не передан или передан не в том формате. Ошибка ${err}`);
+  //           break
+  //         case 401:
+  //           console.log(`Переданный токен некорректен. Ошибка ${err}`);
+  //           break
+  //         default:
+  //           console.log(`Ошибка. ${err}`);
+  //           break
+  //       }
+  //       setLoggedIn(false);
+  //     })
+  //   } else {
+  //     console.log(`Нет сохраненного токена`);
+  //   }
+  // }
 
   // Разлогин
 
   function handleLogOut() {
-    // localStorage.removeItem('jwt');
     history.push('/sign-in');
     setLoggedIn(false);
-    // setIsSuccess(false)
   }
 
   return (
