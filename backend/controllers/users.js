@@ -144,7 +144,7 @@ const login = (req, res, next) => {
           maxAge: 3600000,
           httpOnly: true,
         })
-        .send({ message: 'Авторизация успешна' });
+        .end();
     })
     .catch((err) => {
       if (err.message === 'IncorrectData') {
