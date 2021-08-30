@@ -196,7 +196,7 @@ function App() {
     auth.authorize(email, password)
     .then((res) => {
       console.log(res);
-      if(res.status === 200) {
+      if(res === 200) {
         // localStorage.setItem('jwt', res.token);
         // console.log(`получили и не сохранили токен <...>${res.token.slice(-5)}`);
         setLoggedIn(true);
