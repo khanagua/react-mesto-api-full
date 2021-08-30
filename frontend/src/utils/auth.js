@@ -42,14 +42,14 @@ export const authorize = (email, password) => {
   })
 };
 
-export const getEmail = (token) => {
+export const getEmail = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      // 'Authorization': `Bearer ${token}`,
     }
   })
   .then(res => {

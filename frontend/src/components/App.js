@@ -34,9 +34,9 @@ function App() {
   const history = useHistory();
   
   // Проверяет токен
-  // React.useEffect(() => {
-  //   tokenCheck();
-  // }, []);
+  React.useEffect(() => {
+    tokenCheck();
+  }, []);
 
   // Получает данные про пользователя
   // Загружает карточки с сервера
@@ -197,8 +197,6 @@ function App() {
     .then((res) => {
       console.log(res);
       if(res === 200) {
-        // localStorage.setItem('jwt', res.token);
-        // console.log(`получили и не сохранили токен <...>${res.token.slice(-5)}`);
         setLoggedIn(true);
         setIsSuccess(true);
         history.push('/');
@@ -227,36 +225,36 @@ function App() {
   }
 
   // Проверка токена
-  // function tokenCheck(token) {
-  //   // const token = localStorage.getItem('jwt');
-  //   if (token) {
-  //     // console.log(`Сохраненный токен <...>${token.slice(-5)}`);
-  //     auth.getEmail(token)
-  //     .then(res => {
-  //       if (res) {
-  //         setLoggedIn(true);
-  //         setUserEmail(res.email);
-  //         history.push('/');
-  //         }
-  //       })
-  //     .catch((err) => {
-  //       switch(err) {
-  //         case 400:
-  //           console.log(`Токен не передан или передан не в том формате. Ошибка ${err}`);
-  //           break
-  //         case 401:
-  //           console.log(`Переданный токен некорректен. Ошибка ${err}`);
-  //           break
-  //         default:
-  //           console.log(`Ошибка. ${err}`);
-  //           break
-  //       }
-  //       setLoggedIn(false);
-  //     })
-  //   } else {
-  //     console.log(`Нет сохраненного токена`);
-  //   }
-  // }
+  function tokenCheck(req, res, next) {
+    const token = req.cookie;
+    if (token) {
+      console.log(`Браузер прислал куку <...>${token.slice(-5)}`);
+      auth.getEmail(token)
+      .then(res => {
+        if (res) {
+          setLoggedIn(true);
+          setUserEmail(res.email);
+          history.push('/');
+          }
+        })
+      .catch((err) => {
+        switch(err) {
+          case 400:
+            console.log(`Токен не передан или передан не в том формате. Ошибка ${err}`);
+            break
+          case 401:
+            console.log(`Переданный токен некорректен. Ошибка ${err}`);
+            break
+          default:
+            console.log(`Ошибка. ${err}`);
+            break
+        }
+        setLoggedIn(false);
+      })
+    } else {
+      console.log(`Нет сохраненного токена`);
+    }
+  }
 
   // Разлогин
 
