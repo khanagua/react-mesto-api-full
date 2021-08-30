@@ -49,7 +49,6 @@ export const getEmail = () => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${token}`,
     }
   })
   .then(res => {

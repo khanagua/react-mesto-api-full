@@ -226,10 +226,8 @@ function App() {
 
   // Проверка токена
   function tokenCheck() {
-    console.log('первый пошел');
     auth.getEmail()
     .then(res => {
-      console.log('да, пошел');
       if (res) {
         setLoggedIn(true);
         setUserEmail(res.email);
@@ -237,18 +235,7 @@ function App() {
         }
       })
     .catch((err) => {
-      console.log('нет, не пошел');
-      switch(err) {
-        case 400:
-          console.log(`Токен не передан или передан не в том формате. Ошибка ${err}`);
-          break
-        case 401:
-          console.log(`Переданный токен некорректен. Ошибка ${err}`);
-          break
-        default:
-          console.log(`Ошибка. ${err}`);
-          break
-      }
+      console.log(`Ошибка. ${err}`);
       setLoggedIn(false);
     })
   }
