@@ -261,7 +261,7 @@ function App() {
   // Разлогин
 
   function handleLogOut() {
-    localStorage.removeItem('jwt');
+    // localStorage.removeItem('jwt');
     history.push('/sign-in');
     setLoggedIn(false);
     // setIsSuccess(false)
