@@ -195,7 +195,6 @@ function App() {
   function handleLogin(email, password) {
     auth.authorize(email, password)
     .then((res) => {
-      console.log(res);
       if(res === 200) {
         setLoggedIn(true);
         setIsSuccess(true);
