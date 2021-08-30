@@ -140,7 +140,7 @@ const login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000,
           httpOnly: true,
-          sameSite: true,
+          // sameSite: true,
         })
         .status(200)
         .send({ message: 'Куки авторизации отправлены' });
