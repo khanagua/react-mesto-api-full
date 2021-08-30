@@ -144,7 +144,8 @@ const login = (req, res, next) => {
           maxAge: 3600000,
           httpOnly: true,
         })
-        .end();
+        .status(200)
+        .send({ message: 'Куки авторизации отправлены' });
     })
     .catch((err) => {
       if (err.message === 'IncorrectData') {
