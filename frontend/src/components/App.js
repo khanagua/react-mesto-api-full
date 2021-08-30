@@ -225,35 +225,32 @@ function App() {
   }
 
   // Проверка токена
-  function tokenCheck(req, res, next) {
-    const token = req.cookie;
-    if (token) {
-      console.log(`Браузер прислал куку <...>${token.slice(-5)}`);
-      auth.getEmail(token)
-      .then(res => {
-        if (res) {
-          setLoggedIn(true);
-          setUserEmail(res.email);
-          history.push('/');
-          }
-        })
-      .catch((err) => {
-        switch(err) {
-          case 400:
-            console.log(`Токен не передан или передан не в том формате. Ошибка ${err}`);
-            break
-          case 401:
-            console.log(`Переданный токен некорректен. Ошибка ${err}`);
-            break
-          default:
-            console.log(`Ошибка. ${err}`);
-            break
+  function tokenCheck() {
+    console.log('первый пошел');
+    auth.getEmail()
+    .then(res => {
+      console.log('да, пошел');
+      if (res) {
+        setLoggedIn(true);
+        setUserEmail(res.email);
+        history.push('/');
         }
-        setLoggedIn(false);
       })
-    } else {
-      console.log(`Нет сохраненного токена`);
-    }
+    .catch((err) => {
+      console.log('нет, не пошел');
+      switch(err) {
+        case 400:
+          console.log(`Токен не передан или передан не в том формате. Ошибка ${err}`);
+          break
+        case 401:
+          console.log(`Переданный токен некорректен. Ошибка ${err}`);
+          break
+        default:
+          console.log(`Ошибка. ${err}`);
+          break
+      }
+      setLoggedIn(false);
+    })
   }
 
   // Разлогин
