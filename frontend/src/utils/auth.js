@@ -34,7 +34,7 @@ export const authorize = (email, password) => {
   .then(res => {
     if(res.ok){
       console.log(`Успешная авторизация. Статус ${res.status}`)
-      return res.json();
+      return res.status;
     } else {
       console.log(`Авторизация отклонена. Ошибка ${res.status}`)
       return Promise.reject(res.status);
