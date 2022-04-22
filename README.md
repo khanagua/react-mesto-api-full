@@ -3,7 +3,7 @@
 > - операции с карточками и пользователями. 
 
 ## Ссылки
-**Публичный IP** 84.201.163.48  
+**Публичный IP** 51.250.98.50  
 **Frontend** https://mesto.khanagua.nomoredomains.club  
 **Backend** https://api.mesto.khanagua.nomoredomains.rocks 
 
